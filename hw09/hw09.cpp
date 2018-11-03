@@ -51,7 +51,7 @@ void displayp(Person *p, int size);
 
 int main()
 {
-	srand(time(NULL));
+	srand(time(0));
 	//variables
 	int userNum;
 	int rNum = rand() % 10;
@@ -70,7 +70,21 @@ int main()
 	peopleInTown = new Person[userNum * 2]; // dynamically allocate memory using keyword new of size 2 * userNum
 
 
-	Sublist(menNames, numOfMenOrWomen, menInTown, userNum);//vtc
+	Sublist(menNames, numOfMenOrWomen, menInTown, userNum);
+	Sublist(womenNames, numOfMenOrWomen, womenInTown, userNum);
+
+	cout << "Men in Town: ";
+	displayStrings(menInTown, userNum);
+	cout << endl;
+
+	cout << "Women in Town: ";
+	displayStrings(womenInTown, userNum);
+	cout << endl;
+
+	pick(menInTown, womenInTown, peopleInTown, userNum);
+
+	display(peopleInTown, userNum * 2);
+
 	//displayStrings(smallist, smalnum);//variables to change
 
 	//keep open
@@ -97,15 +111,31 @@ void Sublist(const string bigList[], const int bigNum, string smallList[], const
 			}
 		}
 		smallList[i] = temp;
-		cout << smallList[i];
+		//cout << smallList[i] << " ";
 	}
-	cout << endl;
+	//cout << endl;
 
 }
 
 void pick(string men[], string women[], Person which[], int N)
 {
+	for (int i = 0; i < N; i++) {
+		which[i].name = men[i];
+		which[i].female = false;
+		which[i].spouse = "";
+		which[i].likes = new string[3];
+		
+		Sublist(women, N, which[i].likes, 3);
+	}
+	cout << endl;
+	for (int i = 0; i < N; i++) {
+		which[N + i].name = women[i];
+		which[N + i].female = true;
+		which[N + i].spouse = "";
+		which[N + i].likes = new string[3];
 
+		Sublist(men, N, which[N + i].likes, 3);
+	}
 }
 
 void displayStrings(string *s, int size)
@@ -113,17 +143,26 @@ void displayStrings(string *s, int size)
 	for (int i = 0; i < size; i++)
 	{
 		cout << s[i];
+		if (i < size - 2) cout << ", ";
+		else if (i == size - 2) cout << ", and ";
 	}
 }
 
 void display(Person town[], int size)
 {
-
+	for (int i = 0; i < size; i++) {
+		Person *p = new Person;
+		p = &(town[i]);
+		displayp(p, 3);
+		cout << endl;
+	}
 }
 
 void displayp(Person *p, int size)
 {
 	string gender;
+	string spouse;
+
 	if (p->female)
 	{
 		gender = "female";
@@ -132,9 +171,14 @@ void displayp(Person *p, int size)
 	{
 		gender = "male";
 	}
+	if (p->spouse == "") spouse = "Nobody";
+	else spouse = p->spouse;
 
 	//cout display
-	cout << " is a " << gender << " who likes: " << ". Spouse: " << p->spouse;
+	cout << p->name << " is a " << gender << " who likes ";
+	displayStrings(p->likes, size);
+
+	cout << ". Spouse: " << spouse;
 
 
 }

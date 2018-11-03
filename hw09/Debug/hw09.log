@@ -1,4 +1,4 @@
 ﻿  hw09.cpp
-c:\users\frank\source\repos\hw09\hw09\hw09.cpp(46): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  hw09.vcxproj -> C:\Users\frank\source\repos\hw09\Debug\hw09.exe
-  hw09.vcxproj -> C:\Users\frank\source\repos\hw09\Debug\hw09.pdb (Partial PDB)
+c:\users\blayke\documents\dev\github\hw09\hw09\hw09.cpp(54): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  hw09.vcxproj -> C:\Users\Blayke\Documents\Dev\Github\hw09\Debug\hw09.exe
+  hw09.vcxproj -> C:\Users\Blayke\Documents\Dev\Github\hw09\Debug\hw09.pdb (Partial PDB)
