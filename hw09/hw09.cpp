@@ -19,19 +19,27 @@ struct Person
 
 	//getter functions
 	string getName()
-	{return name;}
+	{
+		return name;
+	}
 	string getLikes()
-	{return* likes;}
+	{
+		return*likes;
+	}
 	string getSpouse()
-	{return spouse;}
+	{
+		return spouse;
+	}
 	bool getFemale()
-	{return female;}
+	{
+		return female;
+	}
 
 };
 
-		const string menNames[10] = { "a", "b", "c", "d", "e", "f", "g" ,"h" ,"i", "j" };
-		const string womenNames[10] = { "1", "2", "3", "4", "5", "6","7", "8", "9", "0" };
-		const string allNames[20] = { "a", "b", "c", "d", "e", "f", "g" ,"h" ,"i", "j", "1", "2", "3", "4", "5", "6","7", "8", "9", "10" };
+const int numOfMenOrWomen = 10;
+const string menNames[10] = { "aiden", "blake", "caden", "duncan", "ethan", "fabio", "gerry" ,"hunkithan" ,"ian", "jack" };
+const string womenNames[10] = { "ally", "barbara", "cammy", "dana", "elsa", "fabia", "gabriella", "hermione", "isabelle", "jen" };
 
 //prototypes
 void Sublist(const string bigList[], const int bigNum, string smallList[], const int smallNum);
@@ -46,16 +54,23 @@ int main()
 	srand(time(NULL));
 	//variables
 	int userNum;
-	int rNum = rand()%10;
-	string smallist[3];
-	int smalnum = 3;
+	int rNum = rand() % 10;
 
 	//propmt
 	cout << "Enter number of couples: ";
 	cin >> userNum;
-	
 
-	Sublist(menNames, userNum, smallist, smalnum);//vtc
+	string *menInTown; // declare a pointer of type string for the men names in town
+	menInTown = new string[userNum]; // dynamically allocate memory using keyword new
+
+	string *womenInTown; // declare a pointer of type string for the women names in town
+	womenInTown = new string[userNum]; // dynamically allocate memory using keyword new
+
+	Person *peopleInTown; // declare a pointer of type Person for the total people in town
+	peopleInTown = new Person[userNum * 2]; // dynamically allocate memory using keyword new of size 2 * userNum
+
+
+	Sublist(menNames, numOfMenOrWomen, menInTown, userNum);//vtc
 	//displayStrings(smallist, smalnum);//variables to change
 
 	//keep open
@@ -64,52 +79,29 @@ int main()
 
 
 
-    return 0;
+	return 0;
 
 }
 
 void Sublist(const string bigList[], const int bigNum, string smallList[], const int smallNum)
 {
-	int* arrpoint = NULL;
-	
-	// MEN big
-	arrpoint = new int[bigNum];
-	for (int i = 0; i < bigNum; i++)
+
+	// small
+	for (int i = 0; i < smallNum; i++)
 	{
-		arrpoint[i] = rand() % bigNum;
-		cout << menNames[arrpoint[i]];
+		string temp = bigList[rand() % bigNum];
+
+		for (int j = 0; j < smallNum; j++) { // search through smallList for duplicate entry
+			if (temp == smallList[j]) { // if one exists,
+				temp = bigList[rand() % bigNum]; // then create a new random temp,
+				j = -1; // and reset the loop
+			}
+		}
+		smallList[i] = temp;
+		cout << smallList[i];
 	}
 	cout << endl;
 
-
-	//MEN small
-	for (int j = 0; j < smallNum; j++)
-	{
-		smallList[j] = menNames[arrpoint[rand()%bigNum]];
-		cout << smallList[j];
-	}
-	cout << endl;
-
-
-	//WOMEN big
-	for (int k = 0; k < bigNum; k++)
-	{
-		arrpoint[k] = rand() % 10;
-		cout << womenNames[arrpoint[k]];
-	}
-	cout << endl;
-
-
-	//WOMEN small
-	for (int l = 0; l < smallNum; l++)
-	{
-		smallList[l] = womenNames[arrpoint[rand() % bigNum]];
-		cout << smallList[l];
-	}
-	cout << endl;
-
-	delete[] arrpoint;
-	arrpoint = NULL;
 }
 
 void pick(string men[], string women[], Person which[], int N)
@@ -143,7 +135,7 @@ void displayp(Person *p, int size)
 	}
 
 	//cout display
-	cout  << " is a " << gender << " who likes: " << ". Spouse: " << p->spouse;
+	cout << " is a " << gender << " who likes: " << ". Spouse: " << p->spouse;
 
-	
+
 }
