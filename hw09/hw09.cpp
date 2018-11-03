@@ -78,7 +78,6 @@ int main()
 	cin >> x;
 
 
-
 	return 0;
 
 }
