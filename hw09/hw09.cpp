@@ -77,7 +77,7 @@ void Sublist(const string bigList[], const int bigNum, string smallList[], const
 	for (int i = 0; i < bigNum; i++)
 	{
 		arrpoint[i] = rand() % bigNum;
-		cout << menNames[arrpoint[i]];
+		cout << bigList[arrpoint[i]];
 	}
 	cout << endl;
 
@@ -85,28 +85,12 @@ void Sublist(const string bigList[], const int bigNum, string smallList[], const
 	//MEN small
 	for (int j = 0; j < smallNum; j++)
 	{
-		smallList[j] = menNames[arrpoint[rand()%bigNum]];
+		smallList[j] = bigList[arrpoint[rand()%bigNum]];
 		cout << smallList[j];
 	}
 	cout << endl;
 
 
-	//WOMEN big
-	for (int k = 0; k < bigNum; k++)
-	{
-		arrpoint[k] = rand() % 10;
-		cout << womenNames[arrpoint[k]];
-	}
-	cout << endl;
-
-
-	//WOMEN small
-	for (int l = 0; l < smallNum; l++)
-	{
-		smallList[l] = womenNames[arrpoint[rand() % bigNum]];
-		cout << smallList[l];
-	}
-	cout << endl;
 
 	delete[] arrpoint;
 	arrpoint = NULL;
