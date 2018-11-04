@@ -1,4 +1,8 @@
 ﻿  hw09.cpp
-c:\users\blayke\documents\dev\github\hw09\hw09\hw09.cpp(54): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\blayke\documents\dev\github\hw09\hw09\hw09.cpp(64): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\blayke\documents\dev\github\hw09\hw09\hw09.cpp(215): warning C4018: '<': signed/unsigned mismatch
+c:\users\blayke\documents\dev\github\hw09\hw09\hw09.cpp(224): warning C4018: '<': signed/unsigned mismatch
+c:\users\blayke\documents\dev\github\hw09\hw09\hw09.cpp(366): warning C4715: 'cheats': not all control paths return a value
+c:\users\blayke\documents\dev\github\hw09\hw09\hw09.cpp(389): warning C4715: 'howBoutIt': not all control paths return a value
   hw09.vcxproj -> C:\Users\Blayke\Documents\Dev\Github\hw09\Debug\hw09.exe
   hw09.vcxproj -> C:\Users\Blayke\Documents\Dev\Github\hw09\Debug\hw09.pdb (Partial PDB)
